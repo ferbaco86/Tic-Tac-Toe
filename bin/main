@@ -1,10 +1,6 @@
 #!/usr/bin/env ruby
 require_relative '../lib/player'
 require_relative '../lib/gamelogic'
-# game_logic = GameLogic.new(Player.new('l', 'X'), Player.new('f', 'X'))
-# start_game = true
-# while start_game || game_logic.continue_playing
-# start_game = false
 puts ''
 puts 'Welcome to Tic-Tac-Toe!'
 puts ''
@@ -26,21 +22,26 @@ puts ''
 puts "#{player1.name} will have the first move"
 puts ''
 round_num = 0
-# player_pos = 0
 
 while round_num < 10 && game_logic.continue_playing
   puts ''
-  # rubocop:disable Layout/LineLength
-  puts round_num.even? ? "#{player1.name}, were would you like to make your move?" : "#{player2.name}, where would you like to make your move?"
+  if round_num.even?
+    puts "#{player1.name}, were would you like to make your move?"
+  else
+    puts "#{player2.name}, where would you like to make your move?"
+  end
   player_pos = gets.chomp
 
   until game_logic.validate(player_pos)
     puts 'That is not a valid option, please select an empty position'
-    puts round_num.even? ? "#{player1.name}, were would you like to make your move?" : "#{player2.name}, where would you like to make your move?"
+    if round_num.even?
+      puts "#{player1.name}, were would you like to make your move?"
+    else
+      puts "#{player2.name}, where would you like to make your move?"
+    end
     puts ''
     player_pos = gets.chomp
   end
-  # rubocop:enable Layout/LineLength
   game_logic.round(round_num, player_pos)
 
   if round_num >= 4
@@ -51,22 +52,12 @@ while round_num < 10 && game_logic.continue_playing
     end
   end
   round_num += 1
-  if round_num == 9
+  if round_num == 9 && game_logic.win.nil?
     puts ''
     puts 'Game tied!'
     game_logic.game_over
   end
   next unless game_logic.game_finished
 
-  yes_or_no = %w[Y N]
-  puts ''
-  puts 'Do you want to play another round? Y/N'
-  user_wants_to_play = gets.chomp.upcase
-  until yes_or_no.include?(user_wants_to_play)
-    puts 'That is not a valid option, do you want to continue playing? Y/N'
-    user_wants_to_play = gets.chomp.upcase
-  end
-  game_logic.continue_playing?(user_wants_to_play)
   round_num = 10
 end
-# end
