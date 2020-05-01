@@ -1,5 +1,9 @@
 class Player
   @@win_conditions = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+  
+  attr_reader :pos
+  attr_reader :name
+  
   def initialize(name, symbol)
     @name = name
     @symbol = symbol
@@ -7,6 +11,7 @@ class Player
   end
   def add_pos(pos)
     @pos << pos
+    @pos
   end
   def check_winner
     @@win_conditions.each do |arr|
