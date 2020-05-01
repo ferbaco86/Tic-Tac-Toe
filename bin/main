@@ -18,12 +18,45 @@ puts "#{player1.name} will have the #{player1.symbol}"
 puts "#{player2.name} will have the #{player2.symbol}"
 puts ''
 game_logic = GameLogic.new(player1, player2)
+
 puts "#{player1.name} will have the first move"
 puts ''
-# puts "#{player1.name}, were would you like to make your move?"
-# player1_pos = gets.chomp
 
-game_logic.round(2, 5)
+while game_logic.continue_playing?
+  round_num = 0
+  
+  while round_num < 10
+    puts (round_num % 2 == 0? "#{player1.name}, were would you like to make your move?" : "#{player2.name}, where would you like to make your move?")
+    player_pos = gets.chomp
+
+    game_logic.round(round_num, player_pos)
+    
+    if round_num >= 5
+      unless game_logic.win.nil?
+        puts "Good game! It was a close one. The victory goes to #{game_logic.win}"
+        game_logic.game_over
+
+        puts 'Do you want to play another round? Y/N'
+        user_wants_to_play = gets.chomp.upcase
+        if user_wants_to_play == 'Y' or user_wants_to_play == 'N'
+          game_logic.continue_playing?
+        else
+          puts 'That is not a valid option, do you want to continue playing? Y/N'
+        end
+      end
+    end
+    
+  end
+
+
+
+
+
+
+
+  game_logic.play_game
+  
+end
 
 
 
