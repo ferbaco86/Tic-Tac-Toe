@@ -10,7 +10,6 @@ class GameLogic
     @player2 = player2
     @game_finished = false
     @continue_playing = true
-    draw(@player1.pos, @player2.pos)
   end
 
   def win
@@ -18,6 +17,10 @@ class GameLogic
     return @player2.name if @player2.check_winner
 
     nil
+  end
+
+  def initialize_board
+    draw(@player1.pos, @player2.pos)
   end
 
   def validate(pos)

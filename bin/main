@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require_relative '../lib/player'
 require_relative '../lib/gamelogic'
-
+game_logic = GameLogic.new(Player.new('l', 'X'), Player.new('f', 'X'))
 start_game = true
 while start_game || game_logic.continue_playing
   start_game = false
@@ -20,6 +20,7 @@ while start_game || game_logic.continue_playing
   puts "#{player2.name} will have the #{player2.symbol}"
   puts ''
   game_logic = GameLogic.new(player1, player2)
+  game_logic.initialize_board
   puts ''
   puts "#{player1.name} will have the first move"
   puts ''
@@ -66,30 +67,3 @@ while start_game || game_logic.continue_playing
     round_num = 10
   end
 end
-
-# puts "#{player1} move is displayed on the board on #{player1_pos}"
-# puts ''
-# puts "#{player2}, were would you like to make your move?"
-# player2_pos = gets.chomp
-# puts "#{player2} move is displayed on the board on #{player2_pos}"
-
-# puts ''
-# puts "#{player1}, were would you like to make your move?"
-# player1_pos = gets.chomp
-# puts "#{player1} move is displayed on the board on #{player1_pos}"
-# puts ''
-# puts "#{player2}, were would you like to make your move?"
-# player2_pos = gets.chomp
-# puts "#{player2} move is displayed on the board on #{player2_pos}"
-
-# puts ''
-# puts "#{player1}, were would you like to make your move?"
-# player1_pos = gets.chomp
-# puts "#{player1} move is displayed on the board on #{player1_pos}"
-# puts ''
-# puts "#{player2}, were would you like to make your move?"
-# player2_pos = gets.chomp
-# puts "#{player2} move is displayed on the board on #{player2_pos}"
-# puts ''
-
-# puts "Good game! It was a close one. The victory goes to #{player1}"
