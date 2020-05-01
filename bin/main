@@ -22,7 +22,7 @@ game_logic = GameLogic.new(player1, player2)
 puts "#{player1.name} will have the first move"
 puts ''
 
-while game_logic.continue_playing?
+while game_logic.continue_playing
   round_num = 0
   
   while round_num < 10
@@ -35,17 +35,21 @@ while game_logic.continue_playing?
       unless game_logic.win.nil?
         puts "Good game! It was a close one. The victory goes to #{game_logic.win}"
         game_logic.game_over
-
-        puts 'Do you want to play another round? Y/N'
-        user_wants_to_play = gets.chomp.upcase
-        if user_wants_to_play == 'Y' or user_wants_to_play == 'N'
-          game_logic.continue_playing?
-        else
-          puts 'That is not a valid option, do you want to continue playing? Y/N'
-        end
       end
     end
-    
+    round_num += 1
+    if round_num == 9
+      game_logic.game_over
+    end
+    if game_logic.game_finished 
+        puts 'Do you want to play another round? Y/N'
+        user_wants_to_play = gets.chomp.upcase
+        until user_wants_to_play == 'Y' or user_wants_to_play == 'N'
+          puts 'That is not a valid option, do you want to continue playing? Y/N'
+          user_wants_to_play =  gets.chomp.upcase
+        end
+        game_logic.continue_playing?(user_wants_to_play)
+    end
   end
 
 
