@@ -1,25 +1,30 @@
 #!/usr/bin/env ruby
 require_relative '../lib/player'
+require_relative '../lib/gamelogic'
 
-puts 'Welcome to Tic-Tac-Toe!'
-puts ''
-puts 'Enter the name for player 1: '
-name_player1 = gets.chomp
-puts 'Enter the name for player 2: '
-name_player2 = gets.chomp
-puts ''
-puts ''
-player1 = Player.new(name_player1, 'X')
-player2 = Player.new(name_player2, 'O')
+
+# puts 'Welcome to Tic-Tac-Toe!'
+# puts ''
+# puts 'Enter the name for player 1: '
+# name_player1 = gets.chomp
+# puts 'Enter the name for player 2: '
+# name_player2 = gets.chomp
+# puts ''
+# puts ''
+player1 = Player.new("L", 'X')
+player2 = Player.new("F", 'O')
 
 puts "#{player1.name} will have the #{player1.symbol}"
 puts "#{player2.name} will have the #{player2.symbol}"
 puts ''
-
+game_logic = GameLogic.new(player1, player2)
 puts "#{player1.name} will have the first move"
 puts ''
-puts "#{player1.name}, were would you like to make your move?"
-player1_pos = gets.chomp
+# puts "#{player1.name}, were would you like to make your move?"
+# player1_pos = gets.chomp
+
+game_logic.round(2, 5)
+
 
 
 

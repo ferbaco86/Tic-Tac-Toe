@@ -1,4 +1,5 @@
 class GameLogic
+  require_relative '../lib/board'
   include Board
 
   attr_reader :game_finished
@@ -10,15 +11,15 @@ class GameLogic
   end
 
   def win
-    return player1.name if player1.check_winner
-    return player2.name if player2.check_winner
+    return @player1.name if @player1.check_winner
+    return @player2.name if @player2.check_winner
     return nil
   end
 
   def round (round_num, pos)
-    player1.add_pos(pos) if round_num % 2 == 0
-    player2.add_pos(pos) if round_num % 2 != 0
-    draw(player1.pos, player2.pos)
+    @player1.add_pos(pos) if round_num % 2 == 0
+    @player2.add_pos(pos) if round_num % 2 != 0
+    draw(@player1.pos, @player2.pos)
 
     if round_num >= 5
       unless win.nil?
@@ -30,5 +31,11 @@ class GameLogic
 
   def game_over(is_finished)
     @game_finished = true
+  end
+
+  def play_game
+    9.times do |round_num|
+      game_logic.round(round_num, @player.pos)
+    end
   end
 end
