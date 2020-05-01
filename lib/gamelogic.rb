@@ -10,6 +10,7 @@ class GameLogic
     @player2 = player2
     @game_finished = false
     @continue_playing = true
+    draw(@player1.pos, @player2.pos)
   end
 
   def win
@@ -18,9 +19,15 @@ class GameLogic
     return nil
   end
 
+  def validate(pos)
+    return true if [1, 2, 3, 4, 5, 6, 7, 8, 9].include?(pos) && !@player1.pos.include?(pos) && !@player2.pos.include?(pos)
+    false
+  end
+
   def round (round_num, pos)
     @player1.add_pos(pos) if round_num % 2 == 0
     @player2.add_pos(pos) if round_num % 2 != 0
+    p @player1.pos
     draw(@player1.pos, @player2.pos)
   end
 

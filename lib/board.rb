@@ -1,10 +1,11 @@
 module Board
   def draw(player1_pos, player2_pos)
     arr = []
+    p player1_pos
     for i in (1..9)
-      if player1_pos.include?(i)
+      if player1_pos.include?(i.to_s)
         arr << 'X'
-      elsif player2_pos.include?(i)
+      elsif player2_pos.include?(i.to_s)
         arr << 'O'
       else
         arr << i.to_s

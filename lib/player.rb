@@ -18,7 +18,7 @@ class Player
     @@win_conditions.each do |arr|
       cont = 0
       arr.each do |item|
-        cont += 1 if @pos.include?(item) 
+        cont += 1 if @pos.include?(item.to_s) 
       end
       return true if cont == 3 
     end
