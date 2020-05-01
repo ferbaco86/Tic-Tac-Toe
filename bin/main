@@ -41,4 +41,4 @@ player2_pos = gets.chomp
 puts "#{player2} move is displayed on the board on #{player2_pos}"
 puts ''
 
-puts "Good game, it was close. The victory goes to #{player1}"
+puts "Good game! It was a close one. The victory goes to #{player1}"
