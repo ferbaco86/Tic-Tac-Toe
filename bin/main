@@ -5,14 +5,15 @@ puts "Enter the name for player 1: "
 player1 = gets.chomp
 puts "Enter the name for player 2: "
 player2 = gets.chomp
-
-p player1, player2
+puts ''
+puts ''
 
 puts "#{player1} will have the X"
-puts ''
 puts "#{player2} will have the O"
 puts ''
+
 puts "#{player1} will have the first move"
+puts ''
 puts "#{player1}, were would you like to make your move?"
 player1_pos = gets.chomp
 puts "#{player1} move is displayed on the board on #{player1_pos}"
@@ -20,5 +21,26 @@ puts ''
 puts "#{player2}, were would you like to make your move?"
 player2_pos = gets.chomp
 puts "#{player2} move is displayed on the board on #{player2_pos}"
+
+puts ''
+puts "#{player1}, were would you like to make your move?"
+player1_pos = gets.chomp
+puts "#{player1} move is displayed on the board on #{player1_pos}"
+puts ''
+puts "#{player2}, were would you like to make your move?"
+player2_pos = gets.chomp
+puts "#{player2} move is displayed on the board on #{player2_pos}"
+
+puts ''
+puts "#{player1}, were would you like to make your move?"
+player1_pos = gets.chomp
+puts "#{player1} move is displayed on the board on #{player1_pos}"
+puts ''
+puts "#{player2}, were would you like to make your move?"
+player2_pos = gets.chomp
+puts "#{player2} move is displayed on the board on #{player2_pos}"
+puts ''
+
+puts "Good game, it was close. The victory goes to #{player1}"
 
 
