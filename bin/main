@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 puts 'Welcome to Tic-Tac-Toe!'
 puts ''
-puts "Enter the name for player 1: "
+puts 'Enter the name for player 1: '
 player1 = gets.chomp
-puts "Enter the name for player 2: "
+puts 'Enter the name for player 2: '
 player2 = gets.chomp
 puts ''
 puts ''
@@ -42,5 +42,3 @@ puts "#{player2} move is displayed on the board on #{player2_pos}"
 puts ''
 
 puts "Good game, it was close. The victory goes to #{player1}"
-
-
