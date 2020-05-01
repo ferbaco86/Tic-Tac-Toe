@@ -2,71 +2,70 @@
 require_relative '../lib/player'
 require_relative '../lib/gamelogic'
 
-game_logic = GameLogic.new(Player.new("L", 'X'), Player.new("F", 'O'))
-while game_logic.continue_playing
-  # puts 'Welcome to Tic-Tac-Toe!'
-  # puts ''
-  # puts 'Enter the name for player 1: '
-  # name_player1 = gets.chomp
-  # puts 'Enter the name for player 2: '
-  # name_player2 = gets.chomp
-  # puts ''
-  # puts ''
-  player1 = Player.new("L", 'X')
-  player2 = Player.new("F", 'O')
+start_game = true
+while start_game || game_logic.continue_playing
+  start_game = false
+  puts 'Welcome to Tic-Tac-Toe!'
+  puts ''
+  puts 'Enter the name for player 1: '
+  name_player1 = gets.chomp
+  puts 'Enter the name for player 2: '
+  name_player2 = gets.chomp
+  puts ''
+  puts ''
+  player1 = Player.new(name_player1, 'X')
+  player2 = Player.new(name_player2, 'O')
 
   puts "#{player1.name} will have the #{player1.symbol}"
   puts "#{player2.name} will have the #{player2.symbol}"
   puts ''
   game_logic = GameLogic.new(player1, player2)
-
+  puts ''
   puts "#{player1.name} will have the first move"
   puts ''
   round_num = 0
   player_pos = 0
-  
+
   while round_num < 10 && game_logic.continue_playing
-    puts (round_num % 2 == 0? "#{player1.name}, were would you like to make your move?" : "#{player2.name}, where would you like to make your move?")
+    puts ''
+    puts round_num.even? ? "#{player1.name}, were would you like to make your move?" : "#{player2.name}, where would you like to make your move?"
     player_pos = gets.chomp
 
     until game_logic.validate(player_pos)
       puts 'That is not a valid option, please select an empty position'
-      puts (round_num % 2 == 0? "#{player1.name}, were would you like to make your move?" : "#{player2.name}, where would you like to make your move?")
+      puts (round_num.even? ? "#{player1.name}, were would you like to make your move?" : "#{player2.name}, where would you like to make your move?")
+      puts ''
       player_pos = gets.chomp
     end
 
     game_logic.round(round_num, player_pos)
-    
+
     if round_num >= 4
       unless game_logic.win.nil?
+        puts ''
         puts "Good game! It was a close one. The victory goes to #{game_logic.win}"
         game_logic.game_over
       end
     end
     round_num += 1
     if round_num == 9
+      puts ''
+      puts 'Game tied!'
       game_logic.game_over
     end
-    if game_logic.game_finished 
-        puts 'Do you want to play another round? Y/N'
-        user_wants_to_play = gets.chomp.upcase
-        until user_wants_to_play == 'Y' or user_wants_to_play == 'N'
-          puts 'That is not a valid option, do you want to continue playing? Y/N'
-          user_wants_to_play =  gets.chomp.upcase
-        end
-        game_logic.continue_playing?(user_wants_to_play)
-        round_num = 10
+    next unless game_logic.game_finished
+
+    puts ''
+    puts 'Do you want to play another round? Y/N'
+    user_wants_to_play = gets.chomp.upcase
+    until user_wants_to_play == 'Y' or user_wants_to_play == 'N'
+      puts 'That is not a valid option, do you want to continue playing? Y/N'
+      user_wants_to_play = gets.chomp.upcase
     end
-  end  
+    game_logic.continue_playing?(user_wants_to_play)
+    round_num = 10
+  end
 end
-
-
-
-
-
-
-
-
 
 # puts "#{player1} move is displayed on the board on #{player1_pos}"
 # puts ''
