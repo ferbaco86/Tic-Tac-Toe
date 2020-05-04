@@ -1,44 +1,65 @@
 #!/usr/bin/env ruby
+there_is_a_winner = false
+puts ''
 puts 'Welcome to Tic-Tac-Toe!'
 puts ''
 puts 'Enter the name for player 1: '
-player1 = gets.chomp
+name_player1 = gets.chomp
 puts 'Enter the name for player 2: '
-player2 = gets.chomp
+name_player2 = gets.chomp
 puts ''
 puts ''
 
-puts "#{player1} will have the X"
-puts "#{player2} will have the O"
+puts "#{name_player1} will have the X"
+puts "#{name_player2} will have the O"
 puts ''
+puts 'HERE THE BOARD WILL BE DRAWN'
+puts ''
+puts "#{name_player1} will have the first move"
+puts ''
+round_num = 0
 
-puts "#{player1} will have the first move"
-puts ''
-puts "#{player1}, were would you like to make your move?"
-player1_pos = gets.chomp
-puts "#{player1} move is displayed on the board on #{player1_pos}"
-puts ''
-puts "#{player2}, were would you like to make your move?"
-player2_pos = gets.chomp
-puts "#{player2} move is displayed on the board on #{player2_pos}"
+while round_num < 9
+  puts ''
+  if round_num.even?
+    puts "#{name_player1}, were would you like to make your move?"
+  else
+    puts "#{name_player2}, where would you like to make your move?"
+  end
+  player_pos = gets.chomp
 
-puts ''
-puts "#{player1}, were would you like to make your move?"
-player1_pos = gets.chomp
-puts "#{player1} move is displayed on the board on #{player1_pos}"
-puts ''
-puts "#{player2}, were would you like to make your move?"
-player2_pos = gets.chomp
-puts "#{player2} move is displayed on the board on #{player2_pos}"
+  puts 'HERE WILL VALIDATE IF THE POSITION IS VALID'
+  puts ''
+  unless [1, 2, 3, 4, 5, 6, 7, 8, 9].include?(player_pos.to_i)
+    puts 'That is not a valid option, please select an empty position'
+    if round_num.even?
+      puts "#{name_player1}, were would you like to make your move?"
+    else
+      puts "#{name_player2}, where would you like to make your move?"
+    end
+    puts ''
+    player_pos = gets.chomp
+  end
+  puts 'HERE WE WILL PRINT THE BOARD AGAIN WITH THE PLAYER SELECTED MOVE'
+  puts ''
+  winner = rand(0..5)
+  puts ''
+  if winner == 1 && round_num >= 4
+    puts "Good game! It was a close one. The victory goes to #{name_player1}"
+    there_is_a_winner = true
+  elsif winner == 2 && round_num >= 4
+    puts "Good game! It was a close one. The victory goes to #{name_player2}"
+    there_is_a_winner = true
+  else
+    puts 'Nobody won this round, moving to next one'
+  end
 
-puts ''
-puts "#{player1}, were would you like to make your move?"
-player1_pos = gets.chomp
-puts "#{player1} move is displayed on the board on #{player1_pos}"
-puts ''
-puts "#{player2}, were would you like to make your move?"
-player2_pos = gets.chomp
-puts "#{player2} move is displayed on the board on #{player2_pos}"
-puts ''
+  round_num += 1
+  if round_num == 9 && winner > 2
+    puts ''
+    puts 'Game tied!'
+  end
+  next unless there_is_a_winner && round_num >= 4
 
-puts "Good game! It was a close one. The victory goes to #{player1}"
+  round_num = 10
+end
