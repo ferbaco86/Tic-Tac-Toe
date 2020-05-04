@@ -1,2 +1,63 @@
 #!/usr/bin/env ruby
-puts 'Hello World!'
+require_relative '../lib/player'
+require_relative '../lib/gamelogic'
+puts ''
+puts 'Welcome to Tic-Tac-Toe!'
+puts ''
+puts 'Enter the name for player 1: '
+name_player1 = gets.chomp
+puts 'Enter the name for player 2: '
+name_player2 = gets.chomp
+puts ''
+puts ''
+player1 = Player.new(name_player1, 'X')
+player2 = Player.new(name_player2, 'O')
+
+puts "#{player1.name} will have the #{player1.symbol}"
+puts "#{player2.name} will have the #{player2.symbol}"
+puts ''
+game_logic = GameLogic.new(player1, player2)
+puts game_logic.initialize_board
+puts ''
+puts "#{player1.name} will have the first move"
+puts ''
+round_num = 0
+
+while round_num < 10 && game_logic.continue_playing
+  puts ''
+  if round_num.even?
+    puts "#{player1.name}, were would you like to make your move?"
+  else
+    puts "#{player2.name}, where would you like to make your move?"
+  end
+  player_pos = gets.chomp
+
+  until game_logic.validate(player_pos)
+    puts 'That is not a valid option, please select an empty position'
+    if round_num.even?
+      puts "#{player1.name}, were would you like to make your move?"
+    else
+      puts "#{player2.name}, where would you like to make your move?"
+    end
+    puts ''
+    player_pos = gets.chomp
+  end
+  puts game_logic.round(round_num, player_pos)
+
+  if round_num >= 4
+    unless game_logic.win.nil?
+      puts ''
+      puts "Good game! It was a close one. The victory goes to #{game_logic.win}"
+      game_logic.game_over
+    end
+  end
+  round_num += 1
+  if round_num == 9 && game_logic.win.nil?
+    puts ''
+    puts 'Game tied!'
+    game_logic.game_over
+  end
+  next unless game_logic.game_finished
+
+  round_num = 10
+end
