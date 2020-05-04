@@ -17,7 +17,7 @@ puts "#{player1.name} will have the #{player1.symbol}"
 puts "#{player2.name} will have the #{player2.symbol}"
 puts ''
 game_logic = GameLogic.new(player1, player2)
-game_logic.initialize_board
+puts game_logic.initialize_board
 puts ''
 puts "#{player1.name} will have the first move"
 puts ''
@@ -42,7 +42,7 @@ while round_num < 10 && game_logic.continue_playing
     puts ''
     player_pos = gets.chomp
   end
-  game_logic.round(round_num, player_pos)
+  puts game_logic.round(round_num, player_pos)
 
   if round_num >= 4
     unless game_logic.win.nil?

@@ -11,10 +11,11 @@ module Board
              end
     end
 
+    ret_arr = []
+
     [0, 3, 6].each do |n|
-      puts '    |   |    '
-      puts "  #{arr[n]} | #{arr[n + 1]} | #{arr[n + 2]}  "
-      puts '____|___|____'
+      ret_arr << "    |   |    \n  #{arr[n]} | #{arr[n + 1]} | #{arr[n + 2]}  \n____|___|____"
     end
+    ret_arr
   end
 end
