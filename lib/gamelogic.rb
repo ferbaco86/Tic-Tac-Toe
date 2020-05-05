@@ -3,7 +3,6 @@ class GameLogic
   include Board
 
   attr_reader :game_finished
-  attr_reader :continue_playing
 
   def initialize(player1, player2)
     @player1 = player1
