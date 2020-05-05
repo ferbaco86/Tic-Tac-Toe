@@ -16,7 +16,7 @@
 
 - Each player should take a turn to place the symbol in an empty square.
 - For this implementation, player one will have the symbol "X" and player two the symbol "O".
-- If all squares are occupied by a symbol and there is no 3-in-a-row sequence then the game is considered a tie.
+- If all squares are occupied by a symbol and there is no winning combination then the game is considered a tie.
 
 ## Built With
 
