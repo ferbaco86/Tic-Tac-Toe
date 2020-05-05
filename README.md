@@ -1,10 +1,22 @@
 # Tic-Tac-Toe
 
-> In this project, we are going to use all the acquired knowledge for Ruby, including OOP (Object Oriented Programming), Modules, Mixins along with all other tools.
+## Instructions
+
+**Goal of the game**
+
+> Tic-tac-toe is a two-player game in which the goal is to create a 3 in-a-row sequence of your symbol inside a 3x3 grid. The sequence can either be vertical, horizontal, or diagonal. Here are some screenshots:
 
 ![screenshot](assets/screenshot1.png)
 
-This first Milestone consisted of setting up the environment and mandatory branches and files to start the development.
+![screenshot](assets/screenshot2.png)
+
+![screenshot](assets/screenshot3.png)
+
+**Rules**
+
+- Each player should take a turn to place the symbol in an empty square.
+- For this implementation, player one will have the symbol "X" and player two the symbol "O".
+- If all squares are occupied by a symbol and there is no winning combination then the game is considered a tie.
 
 ## Built With
 
@@ -23,6 +35,22 @@ $ cd <folder>
 ```
 $ git clone git@github.com:ferbaco86/Tic-Tac-Toe.git
 ```
+
+## To play the game
+
+Please open your terminal and go to the folder where the local copy of the repository is using:
+
+```
+$ cd <folder>
+```
+
+Then type:
+
+```
+$ main
+```
+
+And start playing! Enjoy!
 
 ## Author
 

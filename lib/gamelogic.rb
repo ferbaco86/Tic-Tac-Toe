@@ -40,20 +40,4 @@ class GameLogic
   def game_over
     @game_finished = true
   end
-
-  def play_game
-    round_num = 0
-    while round_num < 10
-      game_logic.round(round_num, @player.pos)
-      if @game_finished
-        round_num = 10
-      else
-        round_num += 1
-      end
-    end
-  end
-
-  def continue_playing?(user_input)
-    @continue_playing = (user_input == 'Y')
-  end
 end
