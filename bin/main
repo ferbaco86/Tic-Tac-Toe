@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-there_is_a_winner = false
+require_relative '../lib/player'
+require_relative '../lib/gamelogic'
 puts ''
 puts 'Welcome to Tic-Tac-Toe!'
 puts ''
@@ -9,57 +10,54 @@ puts 'Enter the name for player 2: '
 name_player2 = gets.chomp
 puts ''
 puts ''
+player1 = Player.new(name_player1, 'X')
+player2 = Player.new(name_player2, 'O')
 
-puts "#{name_player1} will have the X"
-puts "#{name_player2} will have the O"
+puts "#{player1.name} will have the #{player1.symbol}"
+puts "#{player2.name} will have the #{player2.symbol}"
 puts ''
-puts 'HERE THE BOARD WILL BE DRAWN'
+game_logic = GameLogic.new(player1, player2)
+puts game_logic.initialize_board
 puts ''
-puts "#{name_player1} will have the first move"
+puts "#{player1.name} will have the first move"
 puts ''
 round_num = 0
 
-while round_num < 9
+while round_num < 10
   puts ''
   if round_num.even?
-    puts "#{name_player1}, were would you like to make your move?"
+    puts "#{player1.name}, were would you like to make your move?"
   else
-    puts "#{name_player2}, where would you like to make your move?"
+    puts "#{player2.name}, where would you like to make your move?"
   end
   player_pos = gets.chomp
 
-  puts 'HERE WILL VALIDATE IF THE POSITION IS VALID'
-  puts ''
-  unless [1, 2, 3, 4, 5, 6, 7, 8, 9].include?(player_pos.to_i)
+  until game_logic.validate(player_pos)
     puts 'That is not a valid option, please select an empty position'
     if round_num.even?
-      puts "#{name_player1}, were would you like to make your move?"
+      puts "#{player1.name}, were would you like to make your move?"
     else
-      puts "#{name_player2}, where would you like to make your move?"
+      puts "#{player2.name}, where would you like to make your move?"
     end
     puts ''
     player_pos = gets.chomp
   end
-  puts 'HERE WE WILL PRINT THE BOARD AGAIN WITH THE PLAYER SELECTED MOVE'
-  puts ''
-  winner = rand(0..5)
-  puts ''
-  if winner == 1 && round_num >= 4
-    puts "Good game! It was a close one. The victory goes to #{name_player1}"
-    there_is_a_winner = true
-  elsif winner == 2 && round_num >= 4
-    puts "Good game! It was a close one. The victory goes to #{name_player2}"
-    there_is_a_winner = true
-  else
-    puts 'Nobody won this round, moving to next one'
-  end
+  puts game_logic.round(round_num, player_pos)
 
+  if round_num >= 4
+    unless game_logic.win.nil?
+      puts ''
+      puts "Good game! It was a close one. The victory goes to #{game_logic.win}"
+      game_logic.game_over
+    end
+  end
   round_num += 1
-  if round_num == 9 && winner > 2
+  if round_num == 9 && game_logic.win.nil?
     puts ''
     puts 'Game tied!'
+    game_logic.game_over
   end
-  next unless there_is_a_winner && round_num >= 4
+  next unless game_logic.game_finished
 
   round_num = 10
 end
