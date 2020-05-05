@@ -23,7 +23,7 @@ puts "#{player1.name} will have the first move"
 puts ''
 round_num = 0
 
-while round_num < 10 && game_logic.continue_playing
+while round_num < 10
   puts ''
   if round_num.even?
     puts "#{player1.name}, were would you like to make your move?"
