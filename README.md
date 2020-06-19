@@ -58,13 +58,13 @@ And start playing! Enjoy!
 
 - Github: [@lmaldonadoch](https://github.com/lmaldonadoch)
 - Twitter: [@LuisAngelMCh](https://twitter.com/LuisAngelMCh)
-- Linkedin: [linkedin](https://www.linkedin.com/in/luis-angel-maldonado-5b503a1a3/)
+- LinkedIn: [lmaldonadoch](https://www.linkedin.com/in/luis-angel-maldonado-5b503a1a3/)
 
 👤 **Fernando Bahamodes**
 
 - Github: [@ferbaco86](https://github.com/ferbaco86)
 - Twitter: [@ferbac0](https://twitter.com/ferbac0)
-- Linkedin: [linkedin](https://www.linkedin.com/in/fernando-bahamondes-correa/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/fernando-bahamondes-correa/)
 
 ## 🤝 Contributing
 
