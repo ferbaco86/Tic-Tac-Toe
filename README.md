@@ -66,6 +66,10 @@ And start playing! Enjoy!
 - Twitter: [@ferbac0](https://twitter.com/ferbac0)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/fernando-bahamondes-correa/)
 
+## Potencial Features
+
+- Update the CLI for a GUI for game playing
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
